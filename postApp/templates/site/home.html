@@ -1,0 +1,37 @@
+{% extends '../base.html' %}
+
+{% block title %}Main page{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <section class="hero">
+                <div class="hero-body">
+                    <p class="title mb-5">
+                        Новости в кино
+                    </p>
+                    <p class="subtitle mb-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae consequuntur porro expedita
+                        ducimus, nobis accusamus placeat magni eum excepturi est, deserunt soluta doloremque quia
+                        autem asperiores atque doloribus, aliquid ea!
+                    </p>
+                </div>
+            </section>
+        </div>
+        <div class="column">
+            <h2 class="title mt-5">Last news</h2>
+            {% for post in post %}
+            <div class="card mt-5">
+                <div class="card-content">
+                    <div class="content">
+                        <h3>{{ post.title }}</h3>
+                        <a href="{% url 'postDetail' pk=post.pk %}" class="button is-info">Read</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

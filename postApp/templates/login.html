@@ -1,0 +1,70 @@
+{% extends './base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<section class="block">
+    <div class="container">
+        <h1 class="title">Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="button is-primary is-rounded">Login</button>
+            <p>If you don't have an account, <a href="{% url 'register' %}">sign up</a> here.</p>
+        </form>
+    </div>
+</section>
+
+<style>
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+</style>
+
+{% endblock %}
