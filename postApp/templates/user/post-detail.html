@@ -17,9 +17,11 @@
                 <h2>Nothing</h2>
                 {% endif %}
                 <p class="mb-3">{{ post.content }}</p>
+                <a class="button is-primary " href="{% url 'homePage' %}">Назад</a>
+                {% if user.is_superuser %}
                 <a href="{% url 'editPost' pk=post.pk %}" class="button is-info">Редактировать</a>
                 <a href="{% url 'deletePost' pk=post.pk %}" class="button is-danger">Удалить</a>
-
+                {% endif %}
             </div>
         </article>
     </div>

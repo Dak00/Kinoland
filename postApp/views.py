@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate
 
 def homePage(request):
-    posts = Post.objects.all().order_by('-postDate')[:3]
+    posts = Post.objects.all().order_by('-postDate')[:9]
     return render(request, "site/home.html", {
         'posts': posts
     })

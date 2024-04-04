@@ -31,8 +31,10 @@
             <textarea name="content" cols="40" rows="10" required="" id="id_content">
                 {{ post.content }}
             </textarea>
+            <a class="button is-primary" href="{% url 'postDetail' pk=post.pk%}">Назад</a>
+            <a class="button is-info">Редактировать</a>
 
-            <button class="mt-5 button is-info">Редактировать</button>
+
         </form>
     </div>
 {% endblock %}

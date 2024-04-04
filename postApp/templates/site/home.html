@@ -5,33 +5,60 @@
 {% block content %}
 <div class="container">
     <div class="columns">
+        {% if not user.is_authenticated %}
         <div class="column is-two-thirds">
+            {% block cinema_news %}
             <section class="hero">
                 <div class="hero-body">
                     <p class="title mb-5">
                         Новости в кино
                     </p>
-                    <p class="subtitle mb-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae consequuntur porro expedita
-                        ducimus, nobis accusamus placeat magni eum excepturi est, deserunt soluta doloremque quia
-                        autem asperiores atque doloribus, aliquid ea!
+                    <p class="subtitle mb-3" style="white-space: pre-line;">
+                        🎬🍿 Добро пожаловать в Kinoland! 🍿🎬
+                        <br>
+                        🌟 Привет, киноман! Ты любишь кино так же, как и мы? Тогда добро пожаловать в мир Kinoland, где
+                        кинематография оживает во всех своих аспектах!
+                        <br>
+                        🎥 У нас ты найдешь море кинематографических произведений: от классических шедевров до самых
+                        свежих премьер. С нашей помощью ты сможешь окунуться в захватывающие сюжеты, погрузиться в
+                        атмосферу удивительных миров и почувствовать каждый момент кино на себе.
+                        <br>
+                        💡 Но это еще не всё! В Kinoland мы следим за всеми горячими новостями кинематографа, делимся
+                        свежими трейлерами и эксклюзивными интервью с создателями фильмов. У нас ты узнаешь первым обо
+                        всех грядущих блокбастерах, громких премьерах и интересных кинематографических событиях.
+                        <br>
+                        🌟 Погрузись в мир кино с Kinoland и окажись в центре внимания кинематографической индустрии!
+                        Начни свое захватывающее кинематографическое путешествие прямо сейчас. Наслаждайся фильмами,
+                        получай удовольствие от новостей и погружайся в мир кинематографа вместе с нами! 🍿🎬
                     </p>
                 </div>
             </section>
+            {% endblock %}
         </div>
+        {% else %}
         <div class="column">
-            <h2 class="title mt-5">Last news</h2>
-            {% for post in post %}
-            <div class="card mt-5">
-                <div class="card-content">
-                    <div class="content">
-                        <h3>{{ post.title }}</h3>
-                        <a href="{% url 'postDetail' pk=post.pk %}" class="button is-info">Read</a>
+            {% block last_news %}
+            <h2 class="title mt-5">Новинки!</h2>
+            <div class="columns is-multiline">
+                {% for post in posts %}
+                <div class="column is-one-third"> <!-- Определяем ширину колонки. В данном случае, 1/3 ширины ряда -->
+                    <div class="card mt-5">
+                        <div class="card-content">
+                            <div class="content">
+                                <figure class="image is-4by3">
+                                    <img src="{{ post.image }}" alt="{{ post.title }}">
+                                </figure>
+                                <h3>{{ post.title }}</h3>
+                                <a href="{% url 'postDetail' pk=post.pk %}" class="button is-info">Read</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+            {% endblock %}
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

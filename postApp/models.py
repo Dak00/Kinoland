@@ -6,6 +6,11 @@ class Post(models.Model):
     postDate = models.DateTimeField("Published date", default=datetime.now)
     image = models.CharField("Image", max_length=500, blank=True, null=True)
     content = models.TextField("Content")
+    jenre = models.CharField("Jenre", max_length=150)
+    year = models.DateTimeField("Year", default=datetime.now)
+    country = models.CharField("Country", max_length=150)
+    director = models.CharField("Director", max_length=150)
+
 
     def __str__(self):
         return f"{self.title} - {self.postDate}"
